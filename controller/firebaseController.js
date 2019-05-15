@@ -96,13 +96,13 @@ function getTodaysTasks(res) {
       "value",
       function(snapshot) {
         var tasks = snapshot.val();
-        var tasksItems = { tasksDone: [], tasksNotDone: [] };
+        var tasksItems = { tasksDone: {}, tasksNotDone: {} };
         if (tasks) {
           Object.keys(tasks).forEach(function(key) {
             if (tasks[key].status) {
-              tasksItems.tasksDone.push(tasks[key]);
+              tasksItems.tasksDone[tasks[key].taskId] = tasks[key];
             } else {
-              tasksItems.tasksNotDone.push(tasks[key]);
+              tasksItems.tasksNotDone[tasks[key].taskId] = tasks[key];
             }
           });
         }
@@ -128,13 +128,13 @@ function getWeeksTasks(res) {
       "value",
       function(snapshot) {
         var tasks = snapshot.val();
-        var tasksItems = { tasksDone: [], tasksNotDone: [] };
+        var tasksItems = { tasksDone: {}, tasksNotDone: {} };
         if (tasks) {
           Object.keys(tasks).forEach(function(key) {
             if (tasks[key].status) {
-              tasksItems.tasksDone.push(tasks[key]);
+              tasksItems.tasksDone[tasks[key].taskId] = tasks[key];
             } else {
-              tasksItems.tasksNotDone.push(tasks[key]);
+              tasksItems.tasksNotDone[tasks[key].taskId] = tasks[key];
             }
           });
         }
